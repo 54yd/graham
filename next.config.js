@@ -4,8 +4,10 @@ const nextConfig = {
 
   images: {
     //  domains: ["example.com"], // Configures allowed external image sources
-    formats: ["image/avif", "image/webp"], // Enables optimized image formats
+    //formats: ["image/avif", "image/webp"], // Enables optimized image formats
   },
+  distDir: "build", // Change 'build' to your desired directory name
+
   // env: {
   //   CUSTOM_ENV_VARIABLE: "your_value", // Set custom environment variables (as strings only)
   // },
