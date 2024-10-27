@@ -1,4 +1,5 @@
 # 🎬 Movie Auto Cutter
+<img width="685" alt="Screenshot 2024-10-28 at 8 12 05" src="https://github.com/user-attachments/assets/4fd49acf-5395-4e25-85e8-b24e4d0d5111">
 
 **Movie Auto Cutter** is a versatile tool for quickly and easily segmenting videos based on timestamps or subtitle files, designed for both **local use** and **ready-to-deploy** on platforms like Vercel. Simply **upload** a video, **provide timestamps or subtitles**, and let Movie Auto Cutter handle the editing – no complex software required! 
 
@@ -17,6 +18,24 @@ This Project uses NextJS15 so 'npm run dev' or 'npm run build && npm run start' 
 
 - **🎓 Ideal for AI and Educational Use Cases**  
   Generate vast datasets quickly, create targeted educational clips, or practice pronunciation with easy playback of specific segments.
+
+---
+
+## 📊 Results: Example Segmented Data
+
+The following segmented video data are based on SRT files, generated using a separate transcription application. These segments demonstrate how Movie Auto Cutter can be used to create precise, topic-focused video excerpts.
+
+- **[TED Talk: "Secrets of success in 8 words, 3 minutes" | Richard St. John](https://www.youtube.com/watch?v=Y6bbMQXQ180&list=PL7K8c1thIRHu3QeqHUJqefWeLs-PahLl5&index=2)**
+  - ![Segment 1](https://github.com/user-attachments/assets/df6abde1-bf8b-444f-a3d5-ad1155e3480b)
+  - ![Segment 2](https://github.com/user-attachments/assets/b5ece909-b2c9-4260-9aa6-9e24a61d6c6a)
+
+- **[Alien (1986) | 20th Century Fox]**
+  - ![Segment 1](https://github.com/user-attachments/assets/3d4b7fd7-d03c-49d9-9bce-10b9b0c54841)
+  - ![Segment 2](https://github.com/user-attachments/assets/a3287700-c2f5-4359-8049-e3217618164e)
+  - ![Segment 3](https://github.com/user-attachments/assets/3a7f34a2-a814-4fa7-a850-3389dea1281b)
+
+> **Disclaimer**: All media content is used here for academic and non-commercial purposes only. Please ensure that you respect copyright laws and seek permission as necessary for any public usage. "Alien" is the property of 20th Century Fox.
+
 
 ---
 
