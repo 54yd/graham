@@ -29,17 +29,17 @@ async function getVideoDuration(videoPath: string): Promise<number> {
 async function processSegment(
   videoPath: string,
   start: string,
-  duration: number,
+  duration: number | null,
   outputPath: string
 ) {
   return new Promise<void>((resolve, reject) => {
-    ffmpeg(videoPath)
-      .setStartTime(start)
-      .setDuration(duration)
-      .output(outputPath)
-      .on("end", () => resolve)
-      .on("error", () => reject)
-      .run();
+    const command = ffmpeg(videoPath).setStartTime(start).output(outputPath);
+
+    if (duration !== null) {
+      command.setDuration(duration);
+    }
+
+    command.on("end", resolve).on("error", reject).run();
   });
 }
 
@@ -72,57 +72,73 @@ export async function POST(req: NextRequest) {
 
   const videoBuffer = await videoFile.arrayBuffer();
   const videoFilePath = path.join(uploadsDir, `${uuidv4()}_input.mp4`);
-  //@ts-ignore
   await fs.writeFile(videoFilePath, Buffer.from(videoBuffer));
 
   const maxVideoDuration = await getVideoDuration(videoFilePath);
-  let timestamps: string[] = [];
+  let segments: string[] = [];
 
   if (srtFile) {
     const srtBuffer = await srtFile.arrayBuffer();
     const srtContent = Buffer.from(srtBuffer).toString("utf-8");
     const parser = new srtParser2();
     const srtData = parser.fromSrt(srtContent);
-    timestamps = srtData.map(
-      (entry: any) => `${entry.startTime}-->${entry.endTime}`
-    );
+
+    for (const entry of srtData) {
+      const start = formatTimestamp(entry.startTime);
+      const end = formatTimestamp(entry.endTime);
+
+      const startInSeconds = new Date(`1970-01-01T${start}Z`).getTime() / 1000;
+
+      if (startInSeconds >= maxVideoDuration) break;
+
+      const duration =
+        (new Date(`1970-01-01T${end}Z`).getTime() -
+          new Date(`1970-01-01T${start}Z`).getTime()) /
+        1000;
+
+      const effectiveDuration =
+        duration > 0 ? duration : maxVideoDuration - startInSeconds;
+
+      const segmentOutput = path.join(saveDirectory, `segment_${uuidv4()}.mp4`);
+      await processSegment(
+        videoFilePath,
+        start,
+        effectiveDuration,
+        segmentOutput
+      );
+      segments.push(segmentOutput);
+    }
   } else {
     const input = formData.get("input")?.toString() || "";
-    timestamps = input.split(",").map((time: any) => time.trim());
+    const timestamps = input.split(",").map((time: any) => time.trim());
+
+    let startTime = "00:00:00";
+    for (let i = 0; i < timestamps.length; i++) {
+      const endTime = timestamps[i];
+      const duration = endTime
+        ? (new Date(`1970-01-01T${formatTimestamp(endTime)}Z`).getTime() -
+            new Date(`1970-01-01T${formatTimestamp(startTime)}Z`).getTime()) /
+          1000
+        : maxVideoDuration -
+          new Date(`1970-01-01T${formatTimestamp(startTime)}Z`).getTime() /
+            1000;
+
+      const segmentOutput = path.join(saveDirectory, `segment_${uuidv4()}.mp4`);
+      await processSegment(
+        videoFilePath,
+        formatTimestamp(startTime),
+        duration,
+        segmentOutput
+      );
+      segments.push(segmentOutput);
+
+      startTime = endTime || startTime;
+    }
   }
 
-  const segments: string[] = [];
-
-  for (const timestamp of timestamps) {
-    const [start, end] = timestamp.includes("-->")
-      ? timestamp.split("-->").map((time) => time.trim())
-      : [timestamp, null];
-
-    const formattedStart = formatTimestamp(start);
-    const duration = end
-      ? (new Date(`1970-01-01T${formatTimestamp(end)}Z`).getTime() -
-          new Date(`1970-01-01T${formattedStart}Z`).getTime()) /
-        1000
-      : null;
-
-    const startInSeconds =
-      new Date(`1970-01-01T${formattedStart}Z`).getTime() / 1000;
-
-    if (startInSeconds >= maxVideoDuration) break;
-
-    const segmentOutput = path.join(saveDirectory, `segment_${uuidv4()}.mp4`);
-    await processSegment(
-      videoFilePath,
-      formattedStart,
-      duration || maxVideoDuration - startInSeconds,
-      segmentOutput
-    );
-    segments.push(segmentOutput);
-  }
-
+  // Delete the temporary input file after processing
   await fs.unlink(videoFilePath);
 
-  // Respond with the segmented file paths to indicate completion
   return NextResponse.json(
     { message: "Processing complete", segments },
     { status: 200 }
