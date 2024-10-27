@@ -40,8 +40,8 @@ async function processSegment(
     }
 
     command
-      .on("end", () => resolve)
-      .on("error", () => reject)
+      .on("end", () => resolve())
+      .on("error", (err) => reject(err))
       .run();
   });
 }
@@ -75,7 +75,6 @@ export async function POST(req: NextRequest) {
 
   const videoBuffer = await videoFile.arrayBuffer();
   const videoFilePath = path.join(uploadsDir, `${uuidv4()}_input.mp4`);
-  //@ts-ignore
   await fs.writeFile(videoFilePath, Buffer.from(videoBuffer));
 
   const maxVideoDuration = await getVideoDuration(videoFilePath);
