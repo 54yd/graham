@@ -1,4 +1,5 @@
 # 🎬 Movie Auto Cutter
+<img width="685" alt="Screenshot 2024-10-28 at 8 12 05" src="https://github.com/user-attachments/assets/4fd49acf-5395-4e25-85e8-b24e4d0d5111">
 
 **Movie Auto Cutter** is a versatile tool for quickly and easily segmenting videos based on timestamps or subtitle files, designed for both **local use** and **ready-to-deploy** on platforms like Vercel. Simply **upload** a video, **provide timestamps or subtitles**, and let Movie Auto Cutter handle the editing – no complex software required! 
 
@@ -17,6 +18,42 @@ This Project uses NextJS15 so 'npm run dev' or 'npm run build && npm run start' 
 
 - **🎓 Ideal for AI and Educational Use Cases**  
   Generate vast datasets quickly, create targeted educational clips, or practice pronunciation with easy playback of specific segments.
+
+---
+
+## 📊 Results: Example Segmented Data
+
+**The following segmented video data are based on SRT files, generated using a separate transcription application. These segments demonstrate how Movie Auto Cutter can be used to create precise, language and topic-focused video excerpts. The approach appears straightforward and doesn't require a complex audio signal processing algorithm, making it quite fast. It can easily integrate and synergize with AI transcription apps for further extension!**
+
+- **[TED Talk: "Secrets of success in 8 words, 3 minutes" | Richard St. John](https://www.youtube.com/watch?v=Y6bbMQXQ180&list=PL7K8c1thIRHu3QeqHUJqefWeLs-PahLl5&index=2)**
+
+
+
+https://github.com/user-attachments/assets/7daf6219-1856-45a7-8002-5a5c477b89bc
+
+
+
+
+https://github.com/user-attachments/assets/c2a30fe9-8c6f-4905-832d-61a9ed19f8cb
+
+
+
+
+- **[Alien (1986) | 20th Century Fox]**
+
+
+https://github.com/user-attachments/assets/34813e9c-1dfd-4089-a186-1636c028b14c
+
+
+
+https://github.com/user-attachments/assets/c4b7390a-11e6-4a91-87d1-df7c54e73111
+
+
+
+https://github.com/user-attachments/assets/975800ea-fbd0-4f14-909f-645d1ce7e765
+
+> **Disclaimer**: All media content is used here for academic and non-commercial purposes only. Please ensure that you respect copyright laws and seek permission as necessary for any public usage. "Alien" is the property of 20th Century Fox.
+
 
 ---
 
