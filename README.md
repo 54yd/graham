@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎬 Movie Auto Cutter
 
-## Getting Started
+**Movie Auto Cutter** is a versatile tool for quickly and easily segmenting videos based on timestamps or subtitle files, designed for both **local use** and **ready-to-deploy** on platforms like Vercel. Simply **upload** a video, **provide timestamps or subtitles**, and let Movie Auto Cutter handle the editing – no complex software required! 
 
-First, run the development server:
+Built with accessibility and ease-of-use in mind, this app is perfect for language learning, educational video editing, AI training, and more.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+This Project uses NextJS15 so 'npm run dev' or 'npm run build && npm run start' is valid (I also put build file as zip in Release)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Key Features
+- **📂 Local and Cloud-Ready Deployment**  
+  This app is fully compatible with Vercel and other cloud platforms. After deployment, simply run `npm run start` to get going!
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+- **⏩ Fast and Efficient Auto-Cutting**  
+  Forget about complex editing workflows. Just paste your timestamps or upload an SRT file, and Movie Auto Cutter will automatically segment the video for you.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **🎓 Ideal for AI and Educational Use Cases**  
+  Generate vast datasets quickly, create targeted educational clips, or practice pronunciation with easy playback of specific segments.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📜 Background & Motivation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Language Learning & Pronunciation Practice**  
+   🗣️ Repeatedly replay specific phrases or sentences to help with mastering pronunciation by aligning subtitle segments with video clips.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. **Quick Educational Video Editing**  
+   📚 Effortlessly cut out the essential parts of lectures or lessons, saving time and providing focused content for review. No professional software needed! I expect to keep using this tool in graduate school and beyond.
 
-## Deploy on Vercel
+3. **High-Volume Dataset Generation for AI Fine-Tuning**  
+   🤖 For training AI models in video and audio generation, automatically extract refined data for specific characters, expressions, or voice segments, making it easier to create large and precise datasets.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🛠️ Usage Instructions
+
+### Running the App
+1. **Deploy or Run Locally**  
+   - To run on Vercel or a similar cloud platform, build the app and start it with:
+     ```bash
+     npm run start
+     ```
+
+2. **Navigate to the Main Page**  
+   - The main interface lets you upload a video, add subtitle files, and enter timestamps.
+
+### Step-by-Step Guide (Page Instructions)
+
+1. **Upload Video File**  
+   - Click **Upload Video File** and select your `.mp4` file. This is the video from which segments will be extracted.
+   
+2. **Optional: Upload an SRT File**  
+   - Optionally, upload a `.srt` subtitle file for the video. This allows the app to match segments based on subtitle timings, making it easier to clip specific sections.
+   
+3. **Enter Timestamps Manually**  
+   - If you don’t have an SRT file, you can enter timestamps directly in the **Enter Timestamps** field. List each timestamp on a new line, using the format `00:00:03` (HH:MM:SS).
+   
+4. **Choose Save Directory**  
+   - You can specify a save directory for segmented files using the **Select or Enter Save Directory** option. You can select a common path from the dropdown or enter a custom path.
+   
+5. **Start Processing**  
+   - Click **Send** to start cutting. While the app processes, you’ll see a “Processing…” message, and the button will be disabled until all segments are complete.
+   
+6. **View Completion Status**  
+   - Once done, the app will show a “Processing Complete!” message, and you can find the segmented files in the specified directory.
+
+---
+
+## 🎓 AI and Educational Use Cases
+
+#### AI Training with Minimal Effort 🎥🤖
+For developers and researchers working on training AI models in **video and audio generation**, Movie Auto Cutter offers a streamlined, no-fuss way to create large datasets from video clips without needing complex editing tools like Adobe Premiere Pro. With **text-based timestamps** or subtitle files, you can quickly extract and organize data, making it simple to train models on specific characters, emotions, facial expressions, or vocal nuances.
+
+- **High-Volume Data Generation**  
+  Instead of manually editing and saving each segment, you can automate the cutting process. This is especially useful when you need to produce datasets containing hundreds or thousands of short clips.
+
+- **Consistency & Precision**  
+  By using text-based timestamps, the app ensures consistent start and end times for each clip. This accuracy is crucial for models that rely on precise timing, such as lip-syncing in character animation or aligning audio with video.
+
+- **Targeted Training Data**  
+  This tool can be a game-changer in fine-tuning models to recognize or generate particular patterns. For instance, you could use it to cut out only segments where a specific person speaks or to create a dataset of facial expressions for emotion-detection models.
+
+With Movie Auto Cutter, AI developers can quickly produce structured, text-defined video and audio datasets, saving hours of editing time and making it easy to experiment and iterate on training datasets.
+
+---
+
+## 🚀 Future Planned Features
+Movie Auto Cutter has an ambitious roadmap to make video editing even more powerful and automated:
+
+- **🤖 Whisper AI Integration**  
+  Automatically transcribe videos with Whisper AI, creating subtitles on the fly.
+
+- **📝 Content-Based Summarization**  
+  Enable intelligent auto-cutting based on topic importance, e.g., condense a 60-minute lecture into a 10-minute summary, or extract highlights from sports games.
+
+---
+
+## 🔮 Ultimate Goal
+The ultimate vision for Movie Auto Cutter is to evolve into a **Computer Vision security application** that can automatically identify and extract important parts from hours of surveillance footage or interview recordings. Designed with applications in both **public safety** and **private security**, this tool could greatly aid in finding and analyzing key moments in video footage.
+
+---
+
+> ⚡ **Quick Tip:** This app was built with flexibility in mind. You can paste timestamps, upload SRTs, or even integrate it with advanced transcription tools as they’re released – making it a valuable resource for students, researchers, language learners, and AI engineers alike.
+
+---
+
+Hope this helps in making Movie Auto Cutter accessible and engaging for all users! 😊
