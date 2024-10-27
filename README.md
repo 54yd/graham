@@ -23,7 +23,7 @@ This Project uses NextJS15 so 'npm run dev' or 'npm run build && npm run start' 
 
 ## 📊 Results: Example Segmented Data
 
-**The following segmented video data are based on SRT files, generated using a separate transcription application. These segments demonstrate how Movie Auto Cutter can be used to create precise, language and topic-focused video excerpts. The approach appears straightforward and doesn't require a complex audio signal processing algorithm, making it quite fast. It can easily integrate and synergize with AI transcription apps for further extension!
+**The following segmented video data are based on SRT files, generated using a separate transcription application. These segments demonstrate how Movie Auto Cutter can be used to create precise, language and topic-focused video excerpts. The approach appears straightforward and doesn't require a complex audio signal processing algorithm, making it quite fast. It can easily integrate and synergize with AI transcription apps for further extension!**
 
 - **[TED Talk: "Secrets of success in 8 words, 3 minutes" | Richard St. John](https://www.youtube.com/watch?v=Y6bbMQXQ180&list=PL7K8c1thIRHu3QeqHUJqefWeLs-PahLl5&index=2)**
 
